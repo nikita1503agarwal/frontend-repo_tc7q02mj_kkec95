@@ -3,39 +3,33 @@ import { motion } from 'framer-motion'
 import Spline from '@splinetool/react-spline'
 
 function WaliaLogo({ className = 'w-16 h-16' }) {
-  // Stylized goat head (Walia ibex) mark: glowing white with subtle cyan accents
+  // Minimalist, bold, modern goat head logomark (pure white on dark)
+  // Symmetrical, sharp lines, large backward horns, confident expression
   return (
     <div className={`relative ${className}`} aria-label="WaliaTech goat head logo">
       <svg viewBox="0 0 128 128" className="w-full h-full">
         <defs>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <linearGradient id="hornGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="#cfe9ff" />
-          </linearGradient>
         </defs>
-        {/* Horns */}
-        <path d="M36 30c-10 4-16 13-16 23 0 7 3 13 8 18 1.6 1.7 4.6 0.1 3.9-2.2-2.1-6.9-0.6-13.1 3.1-17.7 4.4-5.5 11.8-9.2 21-9.2 1.3 0 2.6.1 3.9.2 0 0-2.8-8.7-14.3-12.2-2.8-.8-6-.8-9.6-.1z" fill="url(#hornGrad)" opacity="0.9" filter="url(#glow)" />
-        <path d="M92 30c10 4 16 13 16 23 0 7-3 13-8 18-1.6 1.7-4.6 0.1-3.9-2.2 2.1-6.9.6-13.1-3.1-17.7-4.4-5.5-11.8-9.2-21-9.2-1.3 0-2.6.1-3.9.2 0 0 2.8-8.7 14.3-12.2 2.8-.8 6-.8 9.6-.1z" fill="url(#hornGrad)" opacity="0.9" filter="url(#glow)" />
-        {/* Head base */}
-        <path d="M40 58c0-10 11.2-16 24-16s24 6 24 16v14c0 6.4-4.1 12.1-10.2 14.2l-13.8 4.8-13.8-4.8C44.1 84.1 40 78.4 40 72V58z" fill="#ffffff" filter="url(#glow)" />
-        {/* Eyes */}
-        <circle cx="56" cy="70" r="2.2" fill="#7dd3fc" />
-        <circle cx="72" cy="70" r="2.2" fill="#7dd3fc" />
-        {/* Nose + beard */}
-        <path d="M64 78c4 0 8-1.5 11-4.2" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" fill="none" />
-        <path d="M64 92c-3 0-5-2.4-5-5.3v-6.2c0-.8.7-1.5 1.5-1.5h7c.8 0 1.5.7 1.5 1.5v6.2c0 2.9-2 5.3-5 5.3z" fill="#e6f1ff" opacity="0.9" />
-        {/* Jaw highlight */}
-        <path d="M50 80c4 4 8.9 6 14 6s10-2 14-6" stroke="#e2e8f0" strokeWidth="1.6" strokeLinecap="round" fill="none" />
-        {/* Subtle cheek lines */}
-        <path d="M48 66c-2.5-1.3-4.5-3.3-5.8-5.8" stroke="#ffffff" strokeOpacity="0.5" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-        <path d="M80 66c2.5-1.3 4.5-3.3 5.8-5.8" stroke="#ffffff" strokeOpacity="0.5" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+        {/* Horns: bold arcs sweeping backward */}
+        <path d="M19 48c2-14 15-26 33-28 9-1 17 1 24 5-9-2-18-2-26 1C38 31 30 38 27 47c-1 3 2 6 5 4 8-5 18-7 32-7s24 2 32 7c3 2 6-1 5-4-3-9-11-16-23-21 8 2 15 6 20 11 8 8 11 18 9 29-1 4-4 8-9 8-2 0-4-1-6-2-8-5-18-8-28-8s-20 3-28 8c-2 1-4 2-6 2-5 0-8-4-9-8-1-5-1-10 1-15z" fill="#ffffff" opacity="1" />
+        {/* Head shield: sleek mask */}
+        <path d="M40 56c0-8 10.5-14 24-14s24 6 24 14v14c0 6-4 11-10 13l-14 5-14-5c-6-2-10-7-10-13V56z" fill="#ffffff" filter="url(#softGlow)" />
+        {/* Eye slits: confident, focused */}
+        <path d="M48 70c4-2 8-3 16-3s12 1 16 3" stroke="#000000" strokeOpacity="0.9" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+        {/* Nose ridge */}
+        <path d="M64 63v14" stroke="#000000" strokeOpacity="0.9" strokeWidth="2.5" strokeLinecap="round" />
+        {/* Angular beard: flowing chevrons */}
+        <path d="M58 86l6 8 6-8" fill="none" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M54 92l10 12 10-12" fill="none" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Jawline highlight: crisp symmetry */}
+        <path d="M46 82c5 5 11 7 18 7s13-2 18-7" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" fill="none" />
       </svg>
     </div>
   )
