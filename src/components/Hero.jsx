@@ -3,23 +3,39 @@ import { motion } from 'framer-motion'
 import Spline from '@splinetool/react-spline'
 
 function WaliaLogo({ className = 'w-16 h-16' }) {
-  // Minimal geometric Walia ibex head logo (white, glowing)
+  // Stylized goat head (Walia ibex) mark: glowing white with subtle cyan accents
   return (
-    <div className={`relative ${className}`}>
-      <svg viewBox="0 0 64 64" className="w-full h-full drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
+    <div className={`relative ${className}`} aria-label="WaliaTech goat head logo">
+      <svg viewBox="0 0 128 128" className="w-full h-full">
         <defs>
-          <radialGradient id="g" cx="50%" cy="50%" r="50%">
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <linearGradient id="hornGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="#e5e7eb" />
-          </radialGradient>
+            <stop offset="100%" stopColor="#cfe9ff" />
+          </linearGradient>
         </defs>
-        <path fill="url(#g)" d="M32 6c7 0 13 4 16 10l-4 2c-2-4-6-6-12-6s-10 2-12 6l-4-2c3-6 9-10 16-10z"/>
-        <path fill="#ffffff" d="M19 26c0-4 5-6 13-6s13 2 13 6v8c0 3-2 6-5 7l-8 3-8-3c-3-1-5-4-5-7v-8z"/>
-        <circle cx="24" cy="33" r="1.5" fill="#0ea5e9"/>
-        <circle cx="40" cy="33" r="1.5" fill="#0ea5e9"/>
-        <path d="M24 40c2 2 5 3 8 3s6-1 8-3" stroke="#94a3b8" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-        <path d="M16 22c-4-2-7-6-7-10 0-3 2-6 5-6 4 0 7 4 10 8" stroke="#ffffff" strokeOpacity="0.7" strokeWidth="2" fill="none" strokeLinecap="round"/>
-        <path d="M48 22c4-2 7-6 7-10 0-3-2-6-5-6-4 0-7 4-10 8" stroke="#ffffff" strokeOpacity="0.7" strokeWidth="2" fill="none" strokeLinecap="round"/>
+        {/* Horns */}
+        <path d="M36 30c-10 4-16 13-16 23 0 7 3 13 8 18 1.6 1.7 4.6 0.1 3.9-2.2-2.1-6.9-0.6-13.1 3.1-17.7 4.4-5.5 11.8-9.2 21-9.2 1.3 0 2.6.1 3.9.2 0 0-2.8-8.7-14.3-12.2-2.8-.8-6-.8-9.6-.1z" fill="url(#hornGrad)" opacity="0.9" filter="url(#glow)" />
+        <path d="M92 30c10 4 16 13 16 23 0 7-3 13-8 18-1.6 1.7-4.6 0.1-3.9-2.2 2.1-6.9.6-13.1-3.1-17.7-4.4-5.5-11.8-9.2-21-9.2-1.3 0-2.6.1-3.9.2 0 0 2.8-8.7 14.3-12.2 2.8-.8 6-.8 9.6-.1z" fill="url(#hornGrad)" opacity="0.9" filter="url(#glow)" />
+        {/* Head base */}
+        <path d="M40 58c0-10 11.2-16 24-16s24 6 24 16v14c0 6.4-4.1 12.1-10.2 14.2l-13.8 4.8-13.8-4.8C44.1 84.1 40 78.4 40 72V58z" fill="#ffffff" filter="url(#glow)" />
+        {/* Eyes */}
+        <circle cx="56" cy="70" r="2.2" fill="#7dd3fc" />
+        <circle cx="72" cy="70" r="2.2" fill="#7dd3fc" />
+        {/* Nose + beard */}
+        <path d="M64 78c4 0 8-1.5 11-4.2" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <path d="M64 92c-3 0-5-2.4-5-5.3v-6.2c0-.8.7-1.5 1.5-1.5h7c.8 0 1.5.7 1.5 1.5v6.2c0 2.9-2 5.3-5 5.3z" fill="#e6f1ff" opacity="0.9" />
+        {/* Jaw highlight */}
+        <path d="M50 80c4 4 8.9 6 14 6s10-2 14-6" stroke="#e2e8f0" strokeWidth="1.6" strokeLinecap="round" fill="none" />
+        {/* Subtle cheek lines */}
+        <path d="M48 66c-2.5-1.3-4.5-3.3-5.8-5.8" stroke="#ffffff" strokeOpacity="0.5" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+        <path d="M80 66c2.5-1.3 4.5-3.3 5.8-5.8" stroke="#ffffff" strokeOpacity="0.5" strokeWidth="1.6" fill="none" strokeLinecap="round" />
       </svg>
     </div>
   )
